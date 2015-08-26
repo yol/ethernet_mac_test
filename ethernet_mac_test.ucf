@@ -1,0 +1,147 @@
+
+NET "led_o[1]" LOC = J7;
+NET "led_o[0]" LOC = H8;
+NET "led_o[2]" LOC = T4;
+NET "led_o[3]" LOC = T3;
+NET "clock_125_i" LOC = AA12;
+NET 
+
+"mdc_o" LOC = AA2;
+NET "mdio_io" LOC = AB3;
+NET "phy_reset_o" LOC = T15;
+
+NET "clock_125_i" IOSTANDARD = LVCMOS33;
+NET "mdc_o" IOSTANDARD = LVCMOS33;
+NET "mdio_io" IOSTANDARD = LVCMOS33;
+NET "phy_reset_o" IOSTANDARD = LVCMOS33;
+NET "led_o[3]" IOSTANDARD = LVCMOS15;
+NET "led_o[2]" IOSTANDARD = LVCMOS15;
+NET "led_o[0]" IOSTANDARD = LVCMOS15;
+NET "led_o[1]" IOSTANDARD = LVCMOS15;
+#Created by Constraints Editor (xc6slx45-fgg484-2) - 2015/05/20
+NET "clock_125_i" TNM_NET = "clock_125_i";
+TIMESPEC TS_clock_125_in = PERIOD "clock_125_i" 125 MHz HIGH 50% INPUT_JITTER 80 ps;
+
+
+NET "user_led_o" LOC = T20;
+
+
+NET "user_led_o" IOSTANDARD = LVCMOS15;
+
+
+NET "gmii_gtx_clk_o" LOC = R11;
+
+NET "mii_tx_en_o" LOC = AB16;
+NET "mii_tx_er_o" LOC = AB18;
+
+NET "gmii_gtx_clk_o" IOSTANDARD = LVCMOS33;
+NET "mii_tx_en_o" IOSTANDARD = LVCMOS33;
+NET "mii_tx_er_o" IOSTANDARD = LVCMOS33;
+#Created by Constraints Editor (xc6slx45-fgg484-2) - 2015/06/03
+NET "mii_tx_er_o" TNM = "gmii_out";
+NET "mii_txd_o[0]" TNM = "gmii_out";
+NET "mii_txd_o[1]" TNM = "gmii_out";
+NET "mii_txd_o[2]" TNM = "gmii_out";
+NET "mii_txd_o[3]" TNM = "gmii_out";
+NET "mii_txd_o[4]" TNM = "gmii_out";
+NET "mii_txd_o[5]" TNM = "gmii_out";
+NET "mii_txd_o[6]" TNM = "gmii_out";
+NET "mii_txd_o[7]" TNM = "gmii_out";
+NET "mii_tx_en_o" TNM = "gmii_out";
+NET "gmii_gtx_clk_o" TNM = "gmii_out";
+NET "mii_rx_er_i" TNM = "mii_in";
+NET "mii_rx_dv_i" TNM = "mii_in";
+NET "mii_rxd_i[7]" TNM = "mii_in";
+NET "mii_rxd_i[6]" TNM = "mii_in";
+NET "mii_rxd_i[5]" TNM = "mii_in";
+NET "mii_rxd_i[4]" TNM = "mii_in";
+NET "mii_rxd_i[3]" TNM = "mii_in";
+NET "mii_rxd_i[1]" TNM = "mii_in";
+NET "mii_rxd_i[0]" TNM = "mii_in";
+NET "mii_rxd_i[2]" TNM = "mii_in";
+#Created by Constraints Editor (xc6slx45-fgg484-2) - 2015/06/03
+# 25 ns constraint is for MII only
+# REFERENCE_PIN constraint is for GMII bus skew analysis
+TIMEGRP "gmii_out" OFFSET = OUT 25 ns AFTER "mii_tx_clk_i" REFERENCE_PIN "gmii_gtx_clk_o";
+
+NET "mii_rxd_i[7]" IOSTANDARD = LVCMOS33;
+NET "mii_rxd_i[6]" IOSTANDARD = LVCMOS33;
+NET "mii_rxd_i[5]" IOSTANDARD = LVCMOS33;
+NET "mii_rxd_i[4]" IOSTANDARD = LVCMOS33;
+NET "mii_rxd_i[3]" IOSTANDARD = LVCMOS33;
+NET "mii_rxd_i[2]" IOSTANDARD = LVCMOS33;
+NET "mii_rxd_i[1]" IOSTANDARD = LVCMOS33;
+NET "mii_rxd_i[0]" IOSTANDARD = LVCMOS33;
+NET "mii_txd_o[7]" IOSTANDARD = LVCMOS33;
+NET "mii_txd_o[6]" IOSTANDARD = LVCMOS33;
+NET "mii_txd_o[5]" IOSTANDARD = LVCMOS33;
+NET "mii_txd_o[4]" IOSTANDARD = LVCMOS33;
+NET "mii_txd_o[3]" IOSTANDARD = LVCMOS33;
+NET "mii_txd_o[2]" IOSTANDARD = LVCMOS33;
+NET "mii_txd_o[1]" IOSTANDARD = LVCMOS33;
+NET "mii_txd_o[0]" IOSTANDARD = LVCMOS33;
+
+
+NET "mii_rxd_i[0]" LOC = Y3;
+NET "mii_rxd_i[1]" LOC = W8;
+NET "mii_rxd_i[2]" LOC = W4;
+NET "mii_rxd_i[3]" LOC = U9;
+NET "mii_rxd_i[4]" LOC = V7;
+NET "mii_rxd_i[5]" LOC = V5;
+NET "mii_rxd_i[6]" LOC = W9;
+NET "mii_rxd_i[7]" LOC = U6;
+NET "mii_txd_o[0]" LOC = AA18;
+NET "mii_txd_o[1]" LOC = AB14;
+NET "mii_txd_o[2]" LOC = AA16;
+NET "mii_txd_o[3]" LOC = W14;
+NET "mii_txd_o[4]" LOC = T16;
+NET "mii_txd_o[5]" LOC = Y14;
+NET "mii_txd_o[6]" LOC = V15;
+NET "mii_txd_o[7]" LOC = AA14;
+NET "mii_rx_clk_i" LOC = Y11;
+NET "mii_tx_clk_i" LOC = W12;
+NET "mii_rx_er_i" LOC = Y8;
+NET "mii_rx_dv_i" LOC = Y4;
+
+NET "mii_txd_o[7]" DRIVE = 12;
+NET "mii_txd_o[6]" DRIVE = 12;
+NET "mii_txd_o[5]" DRIVE = 12;
+NET "mii_txd_o[4]" DRIVE = 12;
+NET "mii_txd_o[3]" DRIVE = 12;
+NET "mii_txd_o[2]" DRIVE = 12;
+NET "mii_txd_o[1]" DRIVE = 12;
+NET "mii_txd_o[0]" DRIVE = 12;
+NET "gmii_gtx_clk_o" DRIVE = 12;
+NET "mii_tx_en_o" DRIVE = 12;
+NET "mii_tx_er_o" DRIVE = 12;
+NET "mdc_o" DRIVE = 12;
+NET "mdio_io" DRIVE = 12;
+NET "mii_txd_o[7]" SLEW = FAST;
+NET "mii_txd_o[6]" SLEW = FAST;
+NET "mii_txd_o[5]" SLEW = FAST;
+NET "mii_txd_o[4]" SLEW = FAST;
+NET "mii_txd_o[3]" SLEW = FAST;
+NET "mii_txd_o[2]" SLEW = FAST;
+NET "mii_txd_o[1]" SLEW = FAST;
+NET "mii_txd_o[0]" SLEW = FAST;
+NET "gmii_gtx_clk_o" SLEW = FAST;
+NET "mii_tx_en_o" SLEW = FAST;
+NET "mii_tx_er_o" SLEW = FAST;
+NET "mdc_o" SLEW = SLOW;
+NET "mdio_io" SLEW = SLOW;
+NET "mii_rx_clk_i" IOSTANDARD = LVCMOS33;
+NET "mii_rx_dv_i" IOSTANDARD = LVCMOS33;
+NET "mii_rx_er_i" IOSTANDARD = LVCMOS33;
+NET "mii_tx_clk_i" IOSTANDARD = LVCMOS33;
+#Created by Constraints Editor (xc6slx45-fgg484-2) - 2015/06/06
+NET "mii_tx_clk_i" TNM_NET = mii_tx_clk_i;
+TIMESPEC TS_mii_tx_clk_i = PERIOD "mii_tx_clk_i" 40 ns HIGH 35%;
+#Created by Constraints Editor (xc6slx45-fgg484-2) - 2015/06/06
+#Created by Constraints Editor (xc6slx45-fgg484-2) - 2015/06/06
+NET "mii_rx_clk_i" TNM_NET = mii_rx_clk_i;
+TIMESPEC TS_mii_rx_clk_i = PERIOD "mii_rx_clk_i" 125 MHz HIGH 33%;
+TIMEGRP "mii_in" OFFSET = IN 2.5 ns VALID 3 ns BEFORE "mii_rx_clk_i" RISING;
+#TIMEGRP "mii_in" OFFSET = IN 3 ns VALID 4 ns BEFORE "mii_rx_clk_i" RISING;
+#Created by Constraints Editor (xc6slx45-fgg484-2) - 2015/08/05
+INST "ethernet_with_fifos_inst/ethernet_inst/mii_gmii_io_inst/ODDR2_inst" TNM = gmii_gtx_clk_oddr2;
+TIMESPEC TS_gmii_gtx_clk_ce_ignore = FROM "FFS" TO "gmii_gtx_clk_oddr2" TIG;
