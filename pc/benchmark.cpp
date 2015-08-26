@@ -1,3 +1,9 @@
+/* This file is part of the ethernet_mac_test project.
+
+   For the full copyright and license information, please read the
+   LICENSE.md file that was distributed with this source code.
+ */
+
 #include <iostream>
 #include <fstream>
 #include <cstdint>
@@ -126,13 +132,13 @@ public:
             const int RECV_SEQUENCE_POS = 15;
 
             if (!m_recv_only) {
-                        std::uint32_t recv_sequence = (m_recv_data[RECV_SEQUENCE_POS] << 24) + (m_recv_data[RECV_SEQUENCE_POS + 1] << 16) + (m_recv_data[RECV_SEQUENCE_POS + 2] << 8) + m_recv_data[RECV_SEQUENCE_POS + 3];
-                        auto sent_data = m_packet_data_sent.at(recv_sequence);
-                        // Free memory in buffer
-                        m_packet_data_sent.erase(recv_sequence);
+                std::uint32_t recv_sequence = (m_recv_data[RECV_SEQUENCE_POS] << 24) + (m_recv_data[RECV_SEQUENCE_POS + 1] << 16) + (m_recv_data[RECV_SEQUENCE_POS + 2] << 8) + m_recv_data[RECV_SEQUENCE_POS + 3];
+                auto sent_data = m_packet_data_sent.at(recv_sequence);
+                // Free memory in buffer
+                m_packet_data_sent.erase(recv_sequence);
 
-                        // Check received packet
-                        bool malformed = false;
+                // Check received packet
+                bool malformed = false;
                 if (sent_data->size() != length) {
                     std::cout << "Size mismatch: Sequence number " << recv_sequence << " had " << sent_data->size() << " bytes sent, " << length << " received" << std::endl;
                             malformed = true;
@@ -148,7 +154,7 @@ public:
                 if (malformed) {
                     if (m_verbose) {
                         std::cout << "Malformed packet: " << std::endl;
-                                std::cout << std::hex;
+                        std::cout << std::hex;
                         for (int i = 0; i < length; i++) {
                             std::cout << static_cast<unsigned short> (m_recv_data[i]) << " ";
                         }
@@ -163,8 +169,8 @@ public:
 
                 if (recv_sequence != m_recv_sequence + 1) {
                     auto missing_count = recv_sequence - m_recv_sequence - 1U;
-                            std::cout << "Missed " << missing_count << " packet(s) (sequence numbers " << (m_recv_sequence + 1U) << " to " << (recv_sequence - 1U) << ")" << std::endl;
-                            m_missed_sequence += missing_count;
+                    std::cout << "Missed " << missing_count << " packet(s) (sequence numbers " << (m_recv_sequence + 1U) << " to " << (recv_sequence - 1U) << ")" << std::endl;
+                    m_missed_sequence += missing_count;
                 }
                 m_recv_sequence = recv_sequence;
             }
@@ -173,10 +179,10 @@ public:
                 m_recv_packets_second++;
                 m_recv_bytes_second += (length - 14);
             }
-                    //std::cout << "Recvd size " << length << std::endl;
-                    start_read();
+            //std::cout << "Recvd size " << length << std::endl;
+            start_read();
             if (!m_recv_only) {
-                    start_send();
+                start_send();
             }
         }
         );
@@ -218,7 +224,6 @@ public:
             std::lock_guard<std::mutex> lock(m_statistics_mutex);
             m_send_packets_second++;
             m_send_bytes_second += (sent - 14);
-                    //start_send();
         });
     }
 
@@ -266,7 +271,7 @@ int main(int argc, char* argv[])
                 ("time-limit,t", boost::program_options::value<unsigned int>(), "Stop after specified number of seconds")
                 ("prefill-count,p", boost::program_options::value<unsigned int>()->default_value(40), "Number of maximum packets in send buffer")
                 ("stat-file,o", boost::program_options::value<std::string>(), "File to write statistical information to")
-		("receive-only,r", boost::program_options::bool_switch(), "Do not send any packets and do not verify received data, only print statistical information");
+                ("receive-only,r", boost::program_options::bool_switch(), "Do not send any packets and do not verify received data, only print statistical information");
         ;
 
         boost::program_options::variables_map options;
@@ -279,7 +284,8 @@ int main(int argc, char* argv[])
 
         boost::asio::io_service io_service, timer_io_service;
         benchmark b(io_service, timer_io_service, options);
-        std::thread timer_thread([&timer_io_service] () {
+        std::thread timer_thread([&timer_io_service] ()
+        {
             timer_io_service.run();
         });
         io_service.run();

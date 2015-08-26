@@ -3,7 +3,7 @@ ethernet_mac benchmark test application
 
 This project is intended to benchmark the performance of the ethernet_mac tri-mode full-duplex Ethernet MAC and test its function on hardware. The project targets the Xilinx Spartan 6 device, and more specifically, the `Trenz Electronic GigaBee platform <http://www.trenz-electronic.de/products/fpga-boards/trenz-electronic/te0600.html>`_.
 
-The benchmark consists of two parts: A design for the FPGA and a C++ application running on a personal computer that is connected to the FPGA board via Ethernet. The C++ application was tested only on Linux, but should run on all POSIX operating systems that support raw sockets. The supported benchmarks are:
+The benchmark consists of two parts: A design for the FPGA and a C++ application running on a personal computer that is connected to the FPGA board via Ethernet. The C++ application runs on Linux only because it uses raw sockets. The supported benchmarks are:
 
 + Full loopback: The PC continously sends packets as fast as it can, which are then looped back identically by the MAC.
 + FPGA max TX data rate: The FPGA continously sends packets on its own. The PC only monitors the incoming data rate.
