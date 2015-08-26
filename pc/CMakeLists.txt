@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.0)
+project(mac-benchmark)
+find_package(Boost COMPONENTS system program_options REQUIRED)
+find_package(Threads REQUIRED)
+add_executable(benchmark benchmark.cpp)
+target_link_libraries(benchmark ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ${Boost_CFLAGS}")

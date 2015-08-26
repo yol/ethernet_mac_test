@@ -50,9 +50,9 @@ Build in ISE
 + Open the project file ethernet_mac_test.xise in the ISE project navigator
 + Select the root node "xc6slx45-2fgg484" in the hierarchy view
 + Run the "Regenerate All Cores" process under "Design Utilities"
-+ Select the "ethernet_mac_test" top module in the hierarchy view
-+ Run the "Generate Programming File" process"
-+ Download the generated file ethernet_mac_test.bit to the device using iMPACT or any other means
++ Select the ``ethernet_mac_test`` top module in the hierarchy view
++ Run the "Generate Programming File" process
++ Download the generated file ``ethernet_mac_test.bit`` to the device using iMPACT or any other means
 
 The default project settings are for an Spartan-6 XC6SLX45-2 FPGA. You need to modify
 them if you have a different device.
@@ -75,15 +75,15 @@ Setup and Test
 
 Connect the PC Ethernet port to the GigaBee baseboard.
 
-To run the loopback benchmark, make sure the TEST_MODE constant in ethernet_mac_test.vhd is
-set to TEST_LOOPBACK, the corresponding design was uploaded to the device and then execute::
+To run the loopback benchmark, make sure the ``TEST_MODE`` constant in ``ethernet_mac_test.vhd`` is
+set to ``TEST_LOOPBACK``, the corresponding design was uploaded to the device and then execute::
     
     # pc/build/benchmark -i <Ethernet interface name> -t 60
     
 This performs the loopback test for 60 seconds.
 
-To run the TX benchmark, make sure the TEST_MODE constant in ethernet_mac_test.vhd is
-set to TEST_TX, the corresponding design was uploaded to the device and then execute::
+To run the TX benchmark, make sure the ``TEST_MODE`` constant in ``ethernet_mac_test.vhd`` is
+set to ``TEST_TX``, the corresponding design was uploaded to the device and then execute::
 
     # pc/build/benchmark -i <Ethernet interface name> -t 60 -r
     
