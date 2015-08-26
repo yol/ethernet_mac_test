@@ -1,0 +1,3 @@
+[submodule "ethernet_mac"]
+	path = ethernet_mac
+	url = https://github.com/pkerling/ethernet_mac

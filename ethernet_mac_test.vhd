@@ -1,10 +1,14 @@
+-- This file is part of the ethernet_mac_test project.
+--
+-- For the full copyright and license information, please read the
+-- LICENSE.md file that was distributed with this source code.
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 library ethernet_mac;
 use ethernet_mac.ethernet_types.all;
-use ethernet_mac.miim_types.all;
 
 entity ethernet_mac_test is
 	port(
@@ -54,6 +58,7 @@ architecture rtl of ethernet_mac_test is
 		TEST_LOOPBACK,
 		TEST_TX
 	);
+	-- Set to desired test
 	constant TEST_MODE : t_test_mode := TEST_LOOPBACK; 
 
 	constant TEST_MODE_TX_PACKET_SIZE : positive             := 1514;
@@ -91,6 +96,7 @@ begin
 						if rx_empty = '0' then
 							rx_rd_en <= '1';
 							if rx_rd_en = '1' then
+								-- If we are fast enough, the TX FIFO should never overflow
 								tx_wr_en <= '1';
 								tx_data  <= rx_data;
 							end if;
